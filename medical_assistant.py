@@ -12,7 +12,7 @@ import re
 from datasets import load_dataset
 
 # Replace with your Groq API key
-API_KEY = "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"
+API_KEY = os.getenv("GROQ_API_KEY")
 
 # Set up headers for Groq API authentication
 headers = {
@@ -46,7 +46,7 @@ def set_page(page_name):
 # Load Whisper model for transcription
 @st.cache_resource
 def load_whisper_model():
-    whisper_model = whisper.load_model("base")
+    whisper_model = whisper.load_model("tiny")
     return whisper_model
 
 whisper_model = load_whisper_model()
